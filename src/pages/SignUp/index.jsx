@@ -1,60 +1,61 @@
 import styles from "./signup.module.scss";
 import { useMutation } from "@tanstack/react-query";
-import { signInFetch } from "../../api";
+import { signUpFetch } from "../../api";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { Spinner } from "../../components/Spinner";
+import { useNoAuth } from "../../hooks/useNoAuth";
 
 export const SignUp = () => {
   const navigate = useNavigate();
   const { mutateAsync, error, isError, isLoading } = useMutation({
     mutationFn: async (values) => {
-      const res = await signInFetch(values);
+      const res = await signUpFetch(values);
 
       if (res.ok) {
         const responce = await res.json();
-        //dispatch(setUpUser({ ...responce.data, token: responce.token }));
-
-        return console.log(responce);
-        //navigate("/1");
+        localStorage.setItem("TOKEN", responce.auth_token);
+        return navigate("/profile");
       }
     },
   });
   const { register, handleSubmit } = useForm();
+  useNoAuth();
 
   if (isError) return error;
-  if (isLoading) return <p>Loading...</p>;
-  const submit = (data) => {
-    console.log(data);
-  };
+  if (isLoading) return <Spinner />;
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Регистрация в VSAS</h1>
         <form onSubmit={handleSubmit(mutateAsync)}>
           <input
-            type="text"
+            type="email"
             className={styles.field}
-            placeholder="Имя"
-            {...register("firstname")}
+            placeholder="Электронный адрес"
+            {...register("email")}
           />
-          <input
-            type="text"
-            className={styles.field}
-            placeholder="Фамилия"
-            {...register("lastname")}
-          />
+
           <input
             type="text"
             className={styles.field}
             placeholder="Имя пользователя"
             {...register("username")}
           />
+
           <input
-            type="email"
+            type="text"
             className={styles.field}
-            placeholder="Электронный адрес"
-            {...register("email")}
+            placeholder="Имя"
+            {...register("first_name")}
           />
+          <input
+            type="text"
+            className={styles.field}
+            placeholder="Фамилия"
+            {...register("last_name")}
+          />
+
           <input
             type="password"
             className={styles.field}

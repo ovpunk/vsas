@@ -1,22 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./signin.module.scss";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { signInFetch } from "../../api";
+import { Spinner } from "../../components/Spinner";
+import { useNoAuth } from "../../hooks/useNoAuth";
 
 export const SignIn = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-  const submit = (data) => {
-    console.log(data);
-  };
+
+  const { mutateAsync, error, isError, isLoading } = useMutation({
+    mutationFn: async (values) => {
+      const res = await signInFetch(values);
+
+      if (res.ok) {
+        const responce = await res.json();
+        localStorage.setItem("TOKEN", responce.auth_token);
+        return navigate("/profile");
+      }
+    },
+  });
+  useNoAuth();
+
+  if (isError) return { error };
+  if (isLoading) return <Spinner />;
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Войти в VSAS</h1>
-        <form onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit(mutateAsync)}>
           <input
             type="text"
             className={styles.field}
-            placeholder="Имя пользователя"
-            {...register("username")}
+            placeholder="Электронный адрес"
+            {...register("email")}
           />
           <input
             type="password"
