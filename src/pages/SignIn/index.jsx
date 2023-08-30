@@ -7,6 +7,8 @@ import { Spinner } from "../../components/Spinner";
 import { useNoAuth } from "../../hooks/useNoAuth";
 
 export const SignIn = () => {
+  useNoAuth();
+
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
@@ -21,7 +23,6 @@ export const SignIn = () => {
       }
     },
   });
-  useNoAuth();
 
   if (isError) return { error };
   if (isLoading) return <Spinner />;

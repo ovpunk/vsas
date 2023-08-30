@@ -1,5 +1,5 @@
 export const initialData = {
-  token: {},
+  token: "",
 };
 
 //export const getInitialData = () => {

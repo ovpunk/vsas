@@ -10,16 +10,75 @@
 .logo {
   font-size: 40px;
   font-weight: 900;
+
+  &:hover {
+    span {
+      transition: 0.5s;
+      color: #e6399b;
+    }
+  }
 }
 //.container {
 //}
 
-.settings {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
+.nav {
+  display: inline-flex;
+  gap: 20px;
+  .icons {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+}
+
+.search {
   &:hover {
-    transition: 1s;
-    transform: rotate(360deg);
+    animation: rotateSearch 1s infinite;
+
+    @keyframes rotateSearch {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(40deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
+
+.users {
+  &:hover {
+    animation: rotateUsers 1s infinite;
+    @keyframes rotateUsers {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(40deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
+
+.settings {
+  &:hover {
+    animation: rotateSettings 1s infinite;
+    @keyframes rotateSettings {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(180deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
 }

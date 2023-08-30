@@ -18,4 +18,12 @@ export const signInFetch = (values) => {
   });
 };
 
-//http://127.0.0.1:8000/api/users/me/
+export const logOutFetch = () => {
+  const token = localStorage.getItem("TOKEN");
+  return fetch("http://127.0.0.1:8000/api/auth/token/logout", {
+    method: "POST",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+};

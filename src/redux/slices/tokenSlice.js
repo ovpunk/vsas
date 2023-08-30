@@ -6,7 +6,7 @@ export const tokenSlice = createSlice({
   initialState: initialData.token,
   reducers: {
     setToken: (_, action) => {
-      return action.payload.auth_token.token;
+      return action.payload;
     },
     cleanToken: () => {
       return initialData;

@@ -7,6 +7,7 @@ import { Spinner } from "../../components/Spinner";
 import { useNoAuth } from "../../hooks/useNoAuth";
 
 export const SignUp = () => {
+  useNoAuth();
   const navigate = useNavigate();
   const { mutateAsync, error, isError, isLoading } = useMutation({
     mutationFn: async (values) => {
@@ -20,7 +21,6 @@ export const SignUp = () => {
     },
   });
   const { register, handleSubmit } = useForm();
-  useNoAuth();
 
   if (isError) return error;
   if (isLoading) return <Spinner />;
