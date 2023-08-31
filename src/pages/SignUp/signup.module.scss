@@ -11,6 +11,11 @@
     justify-content: center;
     margin: 30px 30px 60px;
   }
+
+  .field_wrapper {
+    position: relative;
+  }
+
   .field {
     display: block;
 
@@ -27,6 +32,23 @@
     &:focus {
       outline: none;
     }
+  }
+
+  .show_hide_password {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 18px;
+    right: 45px;
+    cursor: pointer;
+  }
+
+  .error {
+    position: absolute;
+    top: 56px;
+    left: 44px;
+    font-size: 14px;
+    color: #e6399b;
   }
   .button {
     display: block;
