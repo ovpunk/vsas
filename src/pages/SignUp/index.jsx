@@ -34,6 +34,7 @@ export const SignUp = () => {
     handleSubmit,
     formState: { errors },
     setError,
+    watch,
   } = useForm({
     mode: "onBlur",
   });
@@ -51,7 +52,7 @@ export const SignUp = () => {
       setPasswordIcon(show);
     }
   };
-
+  const passwordValue = watch("password" || "text");
   if (isError) return error;
   if (isLoading) return <Spinner />;
 
@@ -156,12 +157,14 @@ export const SignUp = () => {
                 },
               })}
             />
-            <img
-              src={passwordIcon}
-              alt="Показать/Скрыть"
-              className={styles.show_hide_password}
-              onClick={switchPasswordType}
-            />
+            {passwordValue && (
+              <img
+                src={passwordIcon}
+                alt="Показать/Скрыть"
+                className={styles.show_hide_password}
+                onClick={switchPasswordType}
+              />
+            )}
             <div className={styles.error}>
               {errors?.password && (
                 <p>{errors?.password?.message || "Ошибка."}</p>

@@ -11,9 +11,7 @@ import { useState } from "react";
 
 export const SignIn = () => {
   useNoAuth();
-
   const navigate = useNavigate();
-
   const { mutateAsync, error, isError, isLoading } = useMutation({
     mutationFn: async (values) => {
       const res = await signInFetch(values);
@@ -31,20 +29,20 @@ export const SignIn = () => {
       }
     },
   });
-
   const {
     register,
     formState: { errors },
     handleSubmit,
     setError,
+    watch,
   } = useForm({
     mode: "onBlur",
   });
 
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(show);
-
-  const switchPasswordType = () => {
+  const switchPasswordType = (event) => {
+    event.preventDefault();
     if (passwordType === "password") {
       setPasswordType("text");
       setPasswordIcon(hide);
@@ -55,6 +53,7 @@ export const SignIn = () => {
     }
   };
 
+  const passwordValue = watch("password" || "text");
   if (isError) return { error };
   if (isLoading) return <Spinner />;
 
@@ -91,14 +90,14 @@ export const SignIn = () => {
                 required: "* Обязательное поле.",
               })}
             />
-
-            <img
-              src={passwordIcon}
-              alt="Показать/Скрыть"
-              className={styles.show_hide_password}
-              onClick={switchPasswordType}
-            />
-
+            {passwordValue && (
+              <img
+                src={passwordIcon}
+                alt="Показать/Скрыть"
+                className={styles.show_hide_password}
+                onClick={switchPasswordType}
+              />
+            )}
             <div className={styles.error}>
               {errors?.password && (
                 <p>{errors?.password?.message || "Ошибка"}</p>
