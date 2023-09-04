@@ -40,7 +40,7 @@
         transform: rotate(0deg);
       }
       50% {
-        transform: rotate(40deg);
+        transform: rotate(10deg);
       }
       100% {
         transform: rotate(0deg);
@@ -49,15 +49,19 @@
   }
 }
 
-.users {
+.notifications {
   &:hover {
     animation: rotateUsers 1s infinite;
     @keyframes rotateUsers {
       0% {
         transform: rotate(0deg);
       }
-      50% {
-        transform: rotate(40deg);
+      25% {
+        transform: rotate(10deg);
+      }
+
+      75% {
+        transform: rotate(-10deg);
       }
       100% {
         transform: rotate(0deg);
@@ -68,16 +72,16 @@
 
 .settings {
   &:hover {
-    animation: rotateSettings 1s infinite;
+    animation: rotateSettings 30s infinite;
     @keyframes rotateSettings {
       0% {
         transform: rotate(0deg);
       }
       50% {
-        transform: rotate(180deg);
+        transform: rotate(1800deg);
       }
       100% {
-        transform: rotate(360deg);
+        transform: rotate(3600deg);
       }
     }
   }

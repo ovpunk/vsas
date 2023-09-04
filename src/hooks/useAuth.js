@@ -7,5 +7,6 @@ export const useAuth = () => {
   useEffect(() => {
     if (!token) navigate("/");
   }, [navigate, token]);
+
   return { token };
 };

@@ -6,8 +6,9 @@ import { signUpFetch } from "../../api";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { Spinner } from "../../components/Spinner";
-import { useNoAuth } from "../../hooks/useNoAuth";
+
 import { useState } from "react";
+import { useNoAuth } from "../../hooks/useNoAuth";
 
 export const SignUp = () => {
   useNoAuth();
