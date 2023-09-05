@@ -4,7 +4,9 @@ import black from "../../assets/icons/black.jpeg";
 import { useQuery } from "@tanstack/react-query";
 import { Spinner } from "../../components/Spinner";
 import { useAuth } from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Posts } from "../../components/Posts";
+import { PostField } from "../../components/PostField";
+//import { Link } from "react-router-dom";
 
 export const Profile = () => {
   const { token } = useAuth();
@@ -87,6 +89,10 @@ export const Profile = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.posts}>
+        <PostField className={styles.field} />
+        <Posts className={styles.wall} />
       </div>
     </div>
   );

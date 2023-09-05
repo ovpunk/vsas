@@ -1,7 +1,9 @@
 .container {
-  margin: 80px 80px 80px 80px;
+  margin: 20px 0 80px;
   padding: 20px;
   max-width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .black {
@@ -11,9 +13,7 @@
 }
 
 .profile {
-  align-self: center;
-  margin-top: -72px;
-  width: 100%;
+  width: 50%;
   text-align: center;
   .avatar {
     margin: 0 auto;
@@ -45,13 +45,14 @@
     }
   }
   .friends {
-    max-width: 560px;
+    max-width: 500px;
     margin: 0 auto;
-    background-color: #fff;
-    border-radius: 20px;
     padding: 20px 30px 40px;
     margin-top: 50px;
-    box-shadow: 10px 6px 16px rgba(0, 0, 0, 0.1);
+    background-color: inherit;
+    //border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+
     .friends_top {
       display: flex;
       align-items: center;
@@ -62,6 +63,7 @@
         margin: 0 20px 0 0;
       }
       span {
+        font-weight: 500;
         color: #cac6c2;
       }
     }
@@ -80,18 +82,11 @@
         }
         p {
           margin: 0;
+          font-size: 14px;
         }
       }
     }
   }
-}
-
-.edit {
-  position: absolute;
-  top: 40px;
-  right: 378px;
-  width: 30px;
-  height: 30px;
 }
 
 .bottom_line {
@@ -102,4 +97,11 @@
 .friends_bottom_line {
   border-bottom: 1px solid #cac6c2;
   margin: 20px 0 0;
+}
+.posts {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 50%;
+  padding: 0px 30px 40px;
 }
