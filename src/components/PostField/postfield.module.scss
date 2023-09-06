@@ -5,8 +5,11 @@
   display: block;
   padding: 20px 30px 20px;
   //border-radius: 20px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  @media (max-width: 1310px) {
+    margin-top: 40px;
+  }
   .bottom_line {
     border-bottom: 1px solid #cac6c2;
     margin: 20px 0 0;

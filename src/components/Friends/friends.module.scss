@@ -1,0 +1,50 @@
+.friends {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 30px 40px;
+  margin-top: 50px;
+  background-color: inherit;
+  //border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+
+  .friends_top {
+    display: flex;
+    align-items: center;
+
+    p {
+      text-align: start;
+      font-weight: 600;
+      margin: 0 20px 0 0;
+    }
+    span {
+      font-weight: 500;
+      color: #cac6c2;
+    }
+  }
+  .friends_list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+    margin-top: 30px;
+
+    .friend {
+      width: 121px;
+      img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+      }
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.friends_bottom_line {
+  border-bottom: 1px solid #cac6c2;
+  margin: 20px 0 0;
+}
