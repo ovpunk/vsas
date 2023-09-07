@@ -1,10 +1,18 @@
 .wrapper {
   display: block;
-  margin: 40px 0 auto;
+  margin: 40px auto 0;
   justify-content: center;
   width: 90%;
   padding: 20px 30px 10px;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  &:hover {
+    transition: 0.5s;
+    box-shadow: 0px 0px 50px rgba($color: #e6399b, $alpha: 0.3);
+  }
+
+  @media (max-width: 700px) {
+    padding: 20px;
+  }
   .content {
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -44,6 +52,17 @@
           display: inline-flex;
           align-items: center;
           gap: 4px;
+          @media (max-width: 1310px) {
+            line-height: 10px;
+            flex-direction: column;
+          }
+          @media (max-width: 1250px) {
+            flex-direction: row;
+          }
+          @media (max-width: 700px) {
+            flex-direction: column;
+            line-height: 10px;
+          }
           svg {
             width: 30px;
             height: 30px;
@@ -55,7 +74,6 @@
             &:hover {
               background-color: #fbe1ec;
               fill: #e6399b;
-              color: #e6399b;
             }
           }
           span {

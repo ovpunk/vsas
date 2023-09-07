@@ -6,7 +6,13 @@
   background-color: inherit;
   //border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-
+  &:hover {
+    transition: 0.5s;
+    box-shadow: 0px 0px 50px rgba($color: #e6399b, $alpha: 0.3);
+  }
+  @media (max-width: 700px) {
+    padding: 20px 20px 40px;
+  }
   .friends_top {
     display: flex;
     align-items: center;
@@ -28,9 +34,18 @@
     grid-column-gap: 20px;
     grid-row-gap: 30px;
     margin-top: 30px;
-
+    @media (max-width: 490px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: 84px;
+    }
     .friend {
-      width: 121px;
+      max-width: 121px;
+      overflow: hidden;
+      text-overflow: clip;
+      //@media (max-width: 700px) {
+      //  max-width: 580px;
+      //}
       img {
         width: 70px;
         height: 70px;
