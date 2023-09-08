@@ -17,6 +17,21 @@
   @media (max-width: 700px) {
     padding: 20px;
   }
+  .textarea {
+    font-family: "Source Code Pro", monospace;
+    font-weight: 400;
+    display: block;
+    margin: 0 auto;
+    background-color: inherit;
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    //padding: 18px 10px 0;
+    resize: none;
+  }
 
   .bottom_line {
     border-bottom: 1px solid #cac6c2;
@@ -45,6 +60,11 @@
       }
     }
 
+    .smile {
+      path {
+        fill: #cac6c2;
+      }
+    }
     svg {
       padding: 8px;
       border-radius: 50%;

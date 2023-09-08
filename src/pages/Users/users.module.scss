@@ -32,6 +32,8 @@
     .search {
       display: flex;
       justify-content: center;
+      background-color: inherit;
+      border: 2px solid #cac6c2;
       width: 96%;
       outline: none;
       padding: 10px;
@@ -43,7 +45,8 @@
       top: 5px;
       right: 8px;
       padding-left: 8px;
-      border-left: 1px solid;
+      border-left: 1px solid #cac6c2;
+
       cursor: pointer;
     }
   }

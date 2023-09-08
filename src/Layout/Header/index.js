@@ -1,24 +1,25 @@
-import styles from "./header.module.scss";
+import mStyles from "./header.module.scss";
 import settings from "../../assets/icons/settings.svg";
 import search from "../../assets/icons/search.svg";
 import notifications from "../../assets/icons/notifications.svg";
 import { Link, useLocation } from "react-router-dom";
+import Tooltip from "../../components/Tooltip";
 
 export const Header = () => {
   const location = useLocation().pathname;
 
   return (
-    <div className={styles.header}>
+    <div className={mStyles.header}>
       {/*Логотип ведет на разные страницы в зависимости от страницы (чтобы избавится от блика редиректа)*/}
       {location === "/" || location === "/signup" ? (
         <Link to={"/"}>
-          <p className={styles.logo}>
+          <p className={mStyles.logo}>
             VS<span>A</span>S
           </p>
         </Link>
       ) : (
         <Link to={"/profile"}>
-          <p className={styles.logo}>
+          <p className={mStyles.logo}>
             VS<span>A</span>S
           </p>
         </Link>
@@ -27,30 +28,36 @@ export const Header = () => {
       {location === "/" || location === "/signup" ? (
         ""
       ) : (
-        <div className={styles.nav}>
-          <Link to={"/users"}>
-            <img
-              src={search}
-              alt=""
-              className={styles.icons + " " + styles.search}
-            />
-          </Link>
+        <div className={mStyles.nav}>
+          <Tooltip text="Поиск">
+            <Link to={"/users"}>
+              <img
+                src={search}
+                alt=""
+                className={mStyles.icons + " " + mStyles.search}
+              />
+            </Link>
+          </Tooltip>
 
-          <Link to={"/profile"}>
-            <img
-              src={notifications}
-              alt=""
-              className={styles.icons + " " + styles.notifications}
-            />
-          </Link>
+          <Tooltip text="Уведомления">
+            <Link to={"/profile"}>
+              <img
+                src={notifications}
+                alt=""
+                className={mStyles.icons + " " + mStyles.notifications}
+              />
+            </Link>
+          </Tooltip>
 
-          <Link to={"settings"}>
-            <img
-              src={settings}
-              alt="Войти"
-              className={styles.icons + " " + styles.settings}
-            />
-          </Link>
+          <Tooltip text="Настройки">
+            <Link to={"settings"}>
+              <img
+                src={settings}
+                alt="Войти"
+                className={mStyles.icons + " " + mStyles.settings}
+              />
+            </Link>
+          </Tooltip>
         </div>
       )}
     </div>
