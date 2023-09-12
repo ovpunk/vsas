@@ -23,10 +23,10 @@ export const SignUp = () => {
         });
       }
       if (res.ok) {
-        const responce = await res.json();
+        //const responce = await res.json();
 
-        localStorage.setItem("TOKEN", responce.auth_token);
-        return navigate("/profile");
+        //localStorage.setItem("TOKEN", responce.auth_token);
+        return navigate("/");
       }
     },
   });

@@ -67,7 +67,6 @@ export const SignIn = () => {
             <input
               type="email"
               className={styles.field}
-              onChange={(e) => console.log(e.target.value)}
               placeholder="Электронный адрес"
               {...register("email", {
                 required: "* Обязательное поле.",

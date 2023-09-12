@@ -6,19 +6,14 @@ import { useAuth } from "../../hooks/useAuth";
 import { Posts } from "../../components/Posts";
 import { PostField } from "../../components/PostField";
 import { Friends } from "../../components/Friends";
+import { getMe } from "../../api";
 
 export const Profile = () => {
   const { token } = useAuth();
   const { data, error, isError, isLoading } = useQuery({
     queryKey: ["getMyData", token],
     queryFn: async () => {
-      const res = await fetch("http://127.0.0.1:8000/api/users/me/", {
-        method: "GET",
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-
+      const res = await getMe();
       if (res.ok) {
         const responce = await res.json();
         return responce;
@@ -39,14 +34,17 @@ export const Profile = () => {
         <img src={black} alt="" className={styles.avatar} />
 
         <div className={styles.info}>
-          <p className={styles.username}>@slava</p>
-          <p className={styles.name}>Вячеслав Овчинников</p>
+          <p className={styles.username}>@{data.username}</p>
+          <p className={styles.name}>
+            {data.first_name} {data.last_name}
+          </p>
         </div>
         <Friends />
-      </div>
-      <div className={styles.posts}>
-        <PostField className={styles.field} />
-        <Posts className={styles.wall} />
+
+        <div className={styles.posts}>
+          <PostField className={styles.field} />
+          <Posts className={styles.wall} username={data.username} />
+        </div>
       </div>
     </div>
   );

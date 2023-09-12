@@ -3,10 +3,7 @@
   padding: 20px;
   max-width: 100%;
   display: flex;
-  justify-content: space-between;
-  @media (max-width: 1250px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 }
 
 .black {
@@ -19,10 +16,9 @@
   max-width: 600px;
   text-align: center;
   margin: 0 auto;
-  padding: 0 30px;
-  @media (max-width: 1250px) {
-    margin: 0 auto;
-  }
+  padding: 0px;
+  z-index: 1;
+
   .avatar {
     margin: 0 auto;
     width: 250px;
@@ -32,9 +28,7 @@
   .info {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
+
     .username {
       font-size: 20px;
       color: #cac6c2;
@@ -49,22 +43,13 @@
   }
 }
 
-.bottom_line {
-  border-bottom: 1px solid #cac6c2;
-  margin: 20px 0 0;
-  width: 50%;
-}
 .friends_bottom_line {
   border-bottom: 1px solid #cac6c2;
   margin: 20px 0 0;
 }
+
 .posts {
-  display: flex;
-  flex-direction: column;
-  margin: 184px auto 0;
+  text-align: start;
   max-width: 600px;
-  padding: 0px 30px;
-  @media (max-width: 1250px) {
-    margin: 0 auto;
-  }
+  margin-top: 80px;
 }

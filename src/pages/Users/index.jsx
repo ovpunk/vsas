@@ -1,17 +1,32 @@
 import styles from "./users.module.scss";
 import search from "../../assets/icons/search.svg";
-import black from "../../assets/icons/black.jpeg";
-import plus from "../../assets/icons/plus.svg";
 import { useAuth } from "../../hooks/useAuth";
+import { getUsers } from "../../api";
+import { useQuery } from "@tanstack/react-query";
+import { Spinner } from "../../components/Spinner";
+import { UserInSearch } from "../../components/UserInSearch";
 
 export const Users = () => {
-  useAuth();
+  const { token } = useAuth();
+  const { data, error, isError, isLoading } = useQuery({
+    queryKey: ["getUsers", token],
+    queryFn: async () => {
+      const res = await getUsers();
+      if (res.ok) {
+        const responce = await res.json();
+        return responce;
+      }
+    },
+  });
+  if (isLoading) return <Spinner />;
+  if (isError) return error;
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.users_count}>
           <p>Люди</p>
-          <span>123 253</span>
+          <span>{data.length}</span>
         </div>
         <div className={styles.bottom_line}></div>
         <div className={styles.search_wrapper}>
@@ -22,58 +37,13 @@ export const Users = () => {
           />
           <img src={search} alt="Найти" className={styles.search_icon} />
         </div>
-        <div className={styles.user_wrapper}>
-          <div className={styles.user}>
-            <div className={styles.left}>
-              <img src={black} alt="" className={styles.avatar} />
-              <p className={styles.name}>Вячеслав Овчинников</p>
-            </div>
-            <div className={styles.right}>
-              <button>Написать</button>
-              <img src={plus} alt="" className={styles.plus_icon} />
-            </div>
-          </div>
-          <div className={styles.bottom_line}></div>
-        </div>
-        <div className={styles.user_wrapper}>
-          <div className={styles.user}>
-            <div className={styles.left}>
-              <img src={black} alt="" className={styles.avatar} />
-              <p className={styles.name}>Вячеслав Овчинников</p>
-            </div>
-            <div className={styles.right}>
-              <button>Написать</button>
-              <img src={plus} alt="" className={styles.plus_icon} />
-            </div>
-          </div>
-          <div className={styles.bottom_line}></div>
-        </div>
-        <div className={styles.user_wrapper}>
-          <div className={styles.user}>
-            <div className={styles.left}>
-              <img src={black} alt="" className={styles.avatar} />
-              <p className={styles.name}>Вячеслав Овчинников</p>
-            </div>
-            <div className={styles.right}>
-              <button>Написать</button>
-              <img src={plus} alt="" className={styles.plus_icon} />
-            </div>
-          </div>
-          <div className={styles.bottom_line}></div>
-        </div>
-        <div className={styles.user_wrapper}>
-          <div className={styles.user}>
-            <div className={styles.left}>
-              <img src={black} alt="" className={styles.avatar} />
-              <p className={styles.name}>Вячеслав Овчинников</p>
-            </div>
-            <div className={styles.right}>
-              <button>Написать</button>
-              <img src={plus} alt="" className={styles.plus_icon} />
-            </div>
-          </div>
-          <div className={styles.bottom_line}></div>
-        </div>
+        {data.map((user) => (
+          <UserInSearch
+            key={user.username}
+            name={user.first_name + " " + user.last_name}
+            className={styles.user}
+          />
+        ))}
       </div>
     </div>
   );

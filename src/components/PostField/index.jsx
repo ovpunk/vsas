@@ -1,25 +1,47 @@
 import React, { useState } from "react";
 import styles from "./postfield.module.scss";
 import TextareaAutosize from "react-textarea-autosize";
-import EmojiPicker from "emoji-picker-react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createPostFetch } from "../../api";
+import { Spinner } from "../Spinner";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 export const PostField = () => {
   const [post, setPost] = useState("");
-  const [visisbleEmoji, setVisibleEmoji] = useState(false);
+  const [visibleEmoji, setVisibleEmoji] = useState(false);
+  const queryClient = useQueryClient();
 
-  const onEmojiClick = (emojiObject) => {
-    const { emoji } = emojiObject;
-    setPost((prev) => prev + emoji);
+  const { mutateAsync, error, isError, isLoading, isSuccess } = useMutation({
+    mutationFn: async (values) => {
+      const res = await createPostFetch(values);
+      if (res.ok) {
+        const responce = await res.json();
+        return responce;
+      }
+    },
+  });
+  if (isSuccess) {
+    queryClient.invalidateQueries();
+  }
+  if (isError) return { error };
+  if (isLoading) return <Spinner />;
+
+  const handleSubmit = (e) => {
+    //e.preventDefault();
+    mutateAsync({ content: post });
   };
-
   const showEmoji = () => {
-    setVisibleEmoji(!visisbleEmoji);
+    setVisibleEmoji(!visibleEmoji);
+  };
+  const addEmoji = (e) => {
+    setPost((prev) => prev + e.native);
   };
 
   return (
     <>
       <div className={styles.field}>
-        <form>
+        <form type="submit" onSubmit={handleSubmit}>
           <TextareaAutosize
             className={styles.textarea}
             minRows={1} // Минимальное количество строк
@@ -30,7 +52,10 @@ export const PostField = () => {
           />
           <div className={styles.bottom_line}></div>
           <div className={styles.field_bottom}>
-            <button className={styles.post_btn}>Опубликовать пост</button>
+            <button type="submit" className={styles.post_btn}>
+              Опубликовать пост
+            </button>
+
             <svg
               onClick={showEmoji}
               xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +65,6 @@ export const PostField = () => {
             >
               <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
             </svg>
-
             <svg
               fill="none"
               height="28"
@@ -64,12 +88,8 @@ export const PostField = () => {
           </div>
         </form>
       </div>
-      {visisbleEmoji && (
-        <EmojiPicker
-          onEmojiClick={onEmojiClick}
-          width="100%"
-          className="emoji"
-        />
+      {visibleEmoji && (
+        <Picker data={data} onEmojiSelect={(e) => addEmoji(e)} />
       )}
     </>
   );

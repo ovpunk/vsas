@@ -1,7 +1,6 @@
 .wrapper {
   display: block;
   margin: 40px auto 0;
-  justify-content: center;
   width: 90%;
   padding: 20px 30px 10px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
@@ -20,6 +19,7 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     .left {
+      margin-right: 30px;
       .avatar {
         display: flex;
         align-items: center;
@@ -30,18 +30,39 @@
     }
     .right {
       .top {
-        display: inline-flex;
-        gap: 10px;
-        p {
-          font-weight: 700;
-          margin: 0;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        .top_left {
+          display: inline-flex;
+          gap: 10px;
+
+          p {
+            font-weight: 700;
+            margin: 0;
+          }
+          span {
+            color: #cac6c2;
+          }
         }
-        span {
-          color: #cac6c2;
+        .top_right {
+          svg {
+            height: 20px;
+            cursor: pointer;
+            &:hover {
+              fill: #e6399b;
+            }
+          }
         }
       }
       .post {
-        margin: 10px 0;
+        font-size: 20px;
+        margin: 20px 0;
+      }
+      .bottom_line {
+        border-bottom: 1px solid #cac6c2;
+        margin: 20px 0 0;
+        width: 100%;
       }
       .bottom {
         margin-top: 10px;
@@ -49,20 +70,11 @@
         justify-content: space-around;
 
         .icon_wrapper {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          @media (max-width: 1310px) {
-            line-height: 10px;
-            flex-direction: column;
-          }
-          @media (max-width: 1250px) {
-            flex-direction: row;
-          }
-          @media (max-width: 700px) {
-            flex-direction: column;
-            line-height: 10px;
-          }
+          position: relative;
+          //display: inline-flex;
+          //align-items: center;
+          //gap: 4px;
+
           svg {
             width: 30px;
             height: 30px;
@@ -76,11 +88,12 @@
               fill: #e6399b;
             }
           }
+
           span {
-            //position: absolute;
-            //top: 8px;
+            position: absolute;
+            top: 8px;
+            right: -10px;
             color: #cac6c2;
-            //width: 80px;
           }
           &:hover {
             fill: #e6399b;
@@ -93,6 +106,21 @@
               color: #e6399b;
               cursor: pointer;
             }
+          }
+        }
+        .icon_wrapper_like {
+          cursor: pointer;
+          svg {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 4px;
+            align-self: center;
+            border-radius: 50%;
+            fill: #e6399b;
+          }
+          span {
+            color: #e6399b;
           }
         }
       }
