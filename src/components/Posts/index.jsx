@@ -4,7 +4,7 @@ import { getPostsFetch } from "../../api";
 import { Post } from "./Post";
 import { EmptyWall } from "./EmptyWall/index";
 
-export const Posts = ({ username }) => {
+export const Posts = () => {
   const queryClient = useQueryClient();
   queryClient.invalidateQueries({ queryKey: ["getPosts"] });
   const { data, error, isError, isLoading } = useQuery({
@@ -19,7 +19,6 @@ export const Posts = ({ username }) => {
   });
 
   if (isError) return <>{error}</>;
-  //const myPosts = data && data.filter((el) => el.user === username);
 
   return (
     <>
@@ -34,6 +33,7 @@ export const Posts = ({ username }) => {
               isLike={post.is_fan}
               user={post.user}
               time={post.timestamp}
+              firstname={post.user_first_name}
             />
           ))
         ) : (

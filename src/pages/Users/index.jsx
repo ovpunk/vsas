@@ -41,6 +41,7 @@ export const Users = () => {
           <UserInSearch
             key={user.username}
             name={user.first_name + " " + user.last_name}
+            id={user.id}
             className={styles.user}
           />
         ))}

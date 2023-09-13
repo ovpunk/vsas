@@ -2,10 +2,16 @@ import styles from "./post.module.scss";
 import black from "../../../assets/icons/black.jpeg";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addLikeFetch, deleteLikeFetch, deletePostFetch } from "../../../api";
+import {
+  format,
+  differenceInMinutes,
+  differenceInHours,
+  differenceInDays,
+} from "date-fns";
 import { Spinner } from "../../Spinner";
 import classNames from "classnames";
 
-export const Post = ({ content, likes, id, isLike, user, data, time }) => {
+export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
   const queryClient = useQueryClient();
   const { mutateAsync, error, isError, isLoading, isSuccess } = useMutation({
     mutationFn: async (id) => {
@@ -32,6 +38,27 @@ export const Post = ({ content, likes, id, isLike, user, data, time }) => {
     }
   };
 
+  const formatTimeAgo = (time) => {
+    const currentDate = new Date();
+    const publishedDate = new Date(time);
+    const minutesAgo = differenceInMinutes(currentDate, publishedDate);
+    const hoursAgo = differenceInHours(currentDate, publishedDate);
+    const daysAgo = differenceInDays(currentDate, publishedDate);
+
+    if (minutesAgo < 60) {
+      if (minutesAgo < 1) {
+        return "только что";
+      }
+      return `${minutesAgo} м`;
+    } else if (hoursAgo < 24) {
+      return `${hoursAgo} ч `;
+    } else if (daysAgo < 7) {
+      return `${daysAgo} д`;
+    } else {
+      return format(publishedDate, "dd.MM.yy");
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -41,9 +68,9 @@ export const Post = ({ content, likes, id, isLike, user, data, time }) => {
         <div className={styles.right}>
           <div className={styles.top}>
             <div className={styles.top_left}>
-              <p>Вячеслав</p>
+              <p>{firstname}</p>
               <span>@{user}</span>
-              <span>{time}</span>
+              <span>{formatTimeAgo(time)}</span>
             </div>
             <div className={styles.top_right}>
               <svg

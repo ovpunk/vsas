@@ -8,9 +8,9 @@
   align-items: center;
   padding: 0 60px;
   color: #000;
-  z-index: 0;
+  //z-index: 0;
   @media (max-width: 1275px) {
-    z-index: 2;
+    //z-index: 0;
   }
 }
 
@@ -32,6 +32,7 @@
 //}
 
 .nav {
+  position: relative;
   display: inline-flex;
   gap: 10px;
   .icons {
@@ -84,6 +85,13 @@
       }
     }
   }
+}
+
+.notifications_modal {
+  display: flex;
+  position: absolute;
+  top: 400px;
+  right: 400px;
 }
 
 .settings {
