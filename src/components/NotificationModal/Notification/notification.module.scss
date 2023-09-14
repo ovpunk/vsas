@@ -1,0 +1,45 @@
+.notifications {
+  overflow-y: scroll;
+  z-index: 100;
+
+  .notification {
+    line-height: 24px;
+    font-size: 18px;
+    margin-left: 16px;
+    span {
+      color: #e6399b;
+    }
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  button {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px 20px;
+    border: 1px solid #000;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  .accept {
+    background-color: #000;
+    color: #fff;
+    &:hover {
+      background-color: #222;
+    }
+  }
+  .reject {
+    border: none;
+    background-color: inherit;
+    &:hover {
+      background-color: #fbe1ec;
+    }
+  }
+}
+
+.bottom_line {
+  border-bottom: 1px solid #cac6c2;
+  margin: 20px 0 0;
+  width: 100%;
+}

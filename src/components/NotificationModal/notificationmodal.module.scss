@@ -5,14 +5,15 @@
 }
 
 .wrapper {
-  font-family: "Source Code Pro", monospace;
+  //font-family: "Source Code Pro", monospace;
   width: 300px;
-  position: absolute;
+  position: fixed;
   top: 160px;
   right: 20px;
   padding: 20px;
-  border-radius: 20px;
+  //border-radius: 20px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  background-color: #faf7f6;
   z-index: 1;
 
   .top {
@@ -27,44 +28,6 @@
     p {
       font-size: 18px;
       margin: 0;
-    }
-  }
-  .notifications {
-    .notification {
-      line-height: 24px;
-      font-size: 18px;
-
-      span {
-        color: #e6399b;
-        //border-bottom: 1px solid #e6399b;
-        //cursor: pointer;
-      }
-    }
-  }
-  .buttons {
-    display: flex;
-    justify-content: space-evenly;
-    button {
-      font-size: 18px;
-      font-weight: 600;
-      padding: 5px 20px;
-      border: 1px solid #000;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-    .accept {
-      background-color: #000;
-      color: #fff;
-      &:hover {
-        background-color: #222;
-      }
-    }
-    .reject {
-      border: none;
-      background-color: inherit;
-      &:hover {
-        background-color: #fbe1ec;
-      }
     }
   }
 }
