@@ -1,4 +1,4 @@
-export const addFriend = (id) => {
+export const addFriendFetch = (id) => {
   const token = localStorage.getItem("TOKEN");
   return fetch(`http://127.0.0.1:8000/api/befriend/${id}/`, {
     method: "POST",
@@ -8,17 +8,7 @@ export const addFriend = (id) => {
   });
 };
 
-export const acceptFriend = (id) => {
-  const token = localStorage.getItem("TOKEN");
-  return fetch(`http://127.0.0.1:8000/api/accept/${id}/`, {
-    method: "POST",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  });
-};
-
-export const applicationArrived = () => {
+export const applicationArrivedFetch = () => {
   const token = localStorage.getItem("TOKEN");
   return fetch(`http://127.0.0.1:8000/api/incoming/`, {
     method: "GET",
@@ -28,7 +18,7 @@ export const applicationArrived = () => {
   });
 };
 
-export const rejectFrienshipFetch = (sender) => {
+export const rejectFriendshipFetch = (sender) => {
   const token = localStorage.getItem("TOKEN");
   return fetch(`http://127.0.0.1:8000/api/remove/${sender}/`, {
     method: "DELETE",
@@ -38,7 +28,7 @@ export const rejectFrienshipFetch = (sender) => {
   });
 };
 
-export const acceptFrienshipFetch = (sender) => {
+export const acceptFriendshipFetch = (sender) => {
   const token = localStorage.getItem("TOKEN");
   return fetch(
     `http://127.0.0.1:8000/api/accept/${sender}/

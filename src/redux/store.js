@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { initialData } from "./initialState";
+import { getInitialData } from "./initialState";
 import { tokenReducer } from "./slices/tokenSlice";
+import { friendsReducer } from "./slices/friends";
 
 export const store = configureStore({
   reducer: {
     token: tokenReducer,
+    friends: friendsReducer,
   },
-  preloadedState: initialData,
+  preloadedState: getInitialData(),
 });
 
 store.subscribe(() => {

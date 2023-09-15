@@ -1,20 +1,26 @@
 import styles from "./userinsearch.module.scss";
 import black from "../../assets/icons/black.jpeg";
-//import plus from "../../assets/icons/plus.svg";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
-  addFriend,
+  addFriendFetch,
   cancelApplicationFetch,
   deleteFriendFetch,
   getMyFriendsFetch,
 } from "../../api/friendsApi/index";
 import { applicationGoneFetch } from "../../api/friendsApi/index.js";
 import { Spinner } from "../Spinner";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearApplication,
+  deleteApplication,
+  setApplication,
+} from "../../redux/slices/friends";
 
 export const UserInSearch = ({ name, id }) => {
-  const [applicationGone, setApplicationGone] = useState(false);
-  //Создать стейт удалить/добавить
+  const dispatch = useDispatch();
+  const application = useSelector((state) => state.friends.application);
+
+  //получить список друзей
   const { data: friends } = useQuery({
     queryKey: ["getMyfriends"],
     queryFn: async () => {
@@ -25,34 +31,36 @@ export const UserInSearch = ({ name, id }) => {
       }
     },
   });
-  console.log(friends);
 
+  //запрос на добавление в друзья
   const { mutateAsync, error, isError, isLoading } = useMutation({
     mutationFn: async (id) => {
-      await addFriend(id);
+      await addFriendFetch(id);
     },
   });
   if (isLoading) return <Spinner />;
   if (isError) return error;
 
+  //отправить заявку
   const handleAddFriend = async () => {
     mutateAsync(id);
-    const res = await applicationGoneFetch();
+    const res = await applicationGoneFetch(id);
     if (res.ok) {
-      setApplicationGone(!applicationGone);
+      dispatch(setApplication({ id: id, application: true }));
     }
-    console.log(res);
+    //dispatch(clearApplication()) //очистка запросов в случае ошибок;
   };
 
+  //отменить заяку
   const handleCancelApplication = async () => {
     const res = await cancelApplicationFetch(id);
     if (res.ok) {
-      setApplicationGone(!applicationGone);
-
-      console.log(res);
+      dispatch(deleteApplication(id));
+      //dispatch(clearApplication()) //очистка запросов в случае ошибок;
     }
   };
 
+  //удалить друга
   const deleteFriend = async () => {
     const res = await deleteFriendFetch(id);
     if (res.ok) {
@@ -71,7 +79,7 @@ export const UserInSearch = ({ name, id }) => {
           {friends && friends.some((friend) => friend.id === id) ? (
             //кнопка удаления
             <button onClick={deleteFriend}>Удалить из друзей</button>
-          ) : applicationGone ? (
+          ) : application.some((app) => app.id === id) ? (
             //кнопка отмены
             <button onClick={handleCancelApplication}>Отменить заявку</button>
           ) : (

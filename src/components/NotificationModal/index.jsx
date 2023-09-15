@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import styles from "./notificationmodal.module.scss";
-import { applicationArrived } from "../../api/friendsApi";
+import { applicationArrivedFetch } from "../../api/friendsApi";
 import { Notification } from "./Notification";
 
 export const NotificationModal = () => {
   const { data, error, isError, isLoading } = useQuery({
     queryKey: ["applicationArrived"],
     queryFn: async () => {
-      const res = await applicationArrived();
+      const res = await applicationArrivedFetch();
       if (res.ok) {
         const responce = res.json();
         return responce;

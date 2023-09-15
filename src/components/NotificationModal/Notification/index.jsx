@@ -1,24 +1,34 @@
 import {
-  acceptFrienshipFetch,
-  rejectFrienshipFetch,
+  acceptFriendshipFetch,
+  rejectFriendshipFetch,
 } from "../../../api/friendsApi";
 import styles from "./notification.module.scss";
+import { useMutation } from "@tanstack/react-query";
 
 export const Notification = ({ data }) => {
+  //принять заявку в друзья
+  const { mutateAsync, isError, error, isLoading } = useMutation({
+    mutationFn: async (sender) => {
+      const res = await acceptFriendshipFetch(sender);
+      if (res.ok) {
+        console.log(res, "Друг добавлен");
+      }
+    },
+  });
+  if (isError) return error;
+  if (isLoading) return <>Zagruzka</>;
+
+  const handleAccept = async (sender) => {
+    mutateAsync(sender);
+  };
+
+  // отклонить заявку в друзья
   const handleReject = async (sender) => {
-    const res = await rejectFrienshipFetch(sender);
+    const res = await rejectFriendshipFetch(sender);
     if (res.ok) {
       console.log("Дружбы нет");
     }
   };
-  console.log(data);
-  const handleAccept = async (sender) => {
-    const res = await acceptFrienshipFetch(sender);
-    if (res.ok) {
-      console.log("Друг добавлен");
-    }
-  };
-
   return (
     <div className={styles.notifications}>
       <p className={styles.notification}>
