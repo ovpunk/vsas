@@ -1,7 +1,9 @@
 .wrapper {
   display: block;
   margin: 40px auto 0;
-  width: 90%;
+  max-width: 570px;
+  margin: 0 auto 20px;
+  padding: 20px 30px 40px;
   padding: 20px 30px 10px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   &:hover {
@@ -9,8 +11,11 @@
     box-shadow: 0px 0px 50px rgba($color: #e6399b, $alpha: 0.3);
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     padding: 20px;
+  }
+  @media (max-width: 576px) {
+    width: 400px;
   }
   .content {
     display: grid;
@@ -56,6 +61,8 @@
         }
       }
       .post {
+        text-align: left;
+
         font-size: 20px;
         margin: 20px 0;
       }

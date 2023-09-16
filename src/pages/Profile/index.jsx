@@ -41,10 +41,10 @@ export const Profile = () => {
         </div>
         <Friends />
 
-        <div className={styles.posts}>
-          <PostField className={styles.field} />
-          <Posts className={styles.wall} username={data.username} />
-        </div>
+        {/*<div className={styles.posts}>*/}
+        <PostField className={styles.field} />
+        <Posts className={styles.wall} username={data.username} />
+        {/*</div>*/}
       </div>
     </div>
   );

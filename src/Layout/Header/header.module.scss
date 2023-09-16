@@ -1,5 +1,5 @@
 .header {
-  width: 90%;
+  width: 92%;
   position: fixed;
   background-color: rgba(#faf7f6, 1);
   //backdrop-filter: blur(20px);
@@ -7,10 +7,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 60px;
+
   color: #000;
   //z-index: 0;
   @media (max-width: 1275px) {
     z-index: 5;
+  }
+  @media (max-width: 992px) {
+    width: 88%;
+  }
+  @media (max-width: 768px) {
+    width: 84%;
   }
 }
 
