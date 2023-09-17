@@ -7,9 +7,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 60px;
-
-  color: #000;
   z-index: 0;
+  color: #000;
+
   @media (max-width: 1275px) {
     z-index: 1;
   }
@@ -48,71 +48,41 @@
     border-radius: 50%;
     padding: 8px;
     cursor: pointer;
+
     @media (max-width: 1200px) {
       width: 34px;
       height: 34px;
     }
   }
-}
-
-.search {
-  &:hover {
-    animation: rotateSearch 1s infinite;
-
-    @keyframes rotateSearch {
-      0% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(10deg);
-      }
-      100% {
-        transform: rotate(0deg);
+  .search {
+    width: 42px;
+    height: 42px;
+    @media (max-width: 1200px) {
+      width: 36px;
+      height: 36px;
+    }
+    &:hover {
+      circle,
+      line {
+        transition: 0.3s;
+        stroke: #e6399b;
       }
     }
   }
-}
-
-.notifications {
-  &:hover {
-    animation: rotateUsers 1s infinite;
-    @keyframes rotateUsers {
-      0% {
-        transform: rotate(0deg);
-      }
-      25% {
-        transform: rotate(10deg);
-      }
-
-      75% {
-        transform: rotate(-10deg);
-      }
-      100% {
-        transform: rotate(0deg);
+  .notifications {
+    &:hover {
+      path {
+        transition: 0.3s;
+        fill: #e6399b;
       }
     }
   }
-}
-
-.notifications_modal {
-  display: flex;
-  position: absolute;
-  top: 400px;
-  right: 400px;
-}
-
-.settings {
-  &:hover {
-    animation: rotateSettings 30s infinite;
-    @keyframes rotateSettings {
-      0% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(1800deg);
-      }
-      100% {
-        transform: rotate(3600deg);
+  .settings {
+    &:hover {
+      circle,
+      path {
+        transition: 0.3s;
+        stroke: #e6399b;
       }
     }
   }

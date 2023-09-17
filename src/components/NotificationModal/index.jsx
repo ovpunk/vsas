@@ -2,8 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import styles from "./notificationmodal.module.scss";
 import { applicationArrivedFetch } from "../../api/friendsApi";
 import { Notification } from "./Notification";
+import classNames from "classnames";
 
-export const NotificationModal = ({ setVisibleNotifications }) => {
+export const NotificationModal = ({ active, setActive }) => {
   const { data, error, isError, isLoading } = useQuery({
     queryKey: ["applicationArrived"],
     queryFn: async () => {
@@ -18,14 +19,26 @@ export const NotificationModal = ({ setVisibleNotifications }) => {
   if (isLoading) return <>Zagruzka</>;
 
   const handleCloseModal = () => {
-    setVisibleNotifications(false);
+    setActive(false);
     document.body.classList.remove("bodyModalOpen");
   };
   console.log(data);
   return (
     <>
-      <div className={styles.wrapper}>
-        <div className={styles.content}>
+      <div
+        className={
+          active ? classNames(styles.modal, styles.modal_active) : styles.modal
+        }
+        onClick={handleCloseModal}
+      >
+        <div
+          className={
+            active
+              ? classNames(styles.content_active, styles.content)
+              : styles.content
+          }
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className={styles.top}>
             <div className={styles.top_left}>
               <h2>Уведомления</h2>
