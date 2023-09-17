@@ -12,7 +12,9 @@ export const Header = () => {
   const location = useLocation().pathname;
   const [visibleNotifications, setVisibleNotifications] = useState(false);
   const showNotifications = () => {
-    setVisibleNotifications(!visibleNotifications);
+    setVisibleNotifications(true);
+    document.body.classList.add("bodyModalOpen");
+    //если нажать второй раз скролл не вернется
   };
   return (
     <>
@@ -69,7 +71,10 @@ export const Header = () => {
         )}
       </div>
       {visibleNotifications && (
-        <NotificationModal className={styles.notifications_modal} />
+        <NotificationModal
+          className={styles.notifications_modal}
+          setVisibleNotifications={setVisibleNotifications}
+        />
       )}
     </>
   );

@@ -15,7 +15,7 @@ export const Friends = () => {
       }
     },
   });
-  console.log(friends);
+
   return (
     <div className={styles.friends}>
       <div className={styles.friends_top}>

@@ -40,11 +40,8 @@ export const Profile = () => {
           </p>
         </div>
         <Friends />
-
-        {/*<div className={styles.posts}>*/}
         <PostField className={styles.field} />
         <Posts className={styles.wall} username={data.username} />
-        {/*</div>*/}
       </div>
     </div>
   );
