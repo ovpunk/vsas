@@ -42,6 +42,15 @@
     top: 18px;
     right: 45px;
     cursor: pointer;
+    fill: #aaa;
+    &:hover {
+      path,
+      circle,
+      line {
+        transition: 0.5s;
+        stroke: #e6399b;
+      }
+    }
   }
 
   .error {

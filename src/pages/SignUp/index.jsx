@@ -1,6 +1,4 @@
 import styles from "./signup.module.scss";
-import show from "../../assets/icons/show.svg";
-import hide from "../../assets/icons/hide.svg";
 import { useMutation } from "@tanstack/react-query";
 import { signUpFetch } from "../../api";
 import { useForm } from "react-hook-form";
@@ -41,16 +39,16 @@ export const SignUp = () => {
   });
 
   const [passwordType, setPasswordType] = useState("password");
-  const [passwordIcon, setPasswordIcon] = useState(show);
+  const [passwordIcon, setPasswordIcon] = useState("show");
 
   const switchPasswordType = () => {
     if (passwordType === "password") {
       setPasswordType("text");
-      setPasswordIcon(hide);
+      setPasswordIcon("hide");
     }
     if (passwordType === "text") {
       setPasswordType("password");
-      setPasswordIcon(show);
+      setPasswordIcon("show");
     }
   };
   const passwordValue = watch("password" || "text");
@@ -158,13 +156,89 @@ export const SignUp = () => {
                 },
               })}
             />
-            {passwordValue && (
-              <img
-                src={passwordIcon}
-                alt="Показать/Скрыть"
-                className={styles.show_hide_password}
-                onClick={switchPasswordType}
-              />
+            {passwordValue ? (
+              passwordIcon === "show" ? (
+                <svg
+                  onClick={switchPasswordType}
+                  className={styles.show_hide_password}
+                  enableBackground="new 0 0 32 32"
+                  id="Editable-line"
+                  version="1.1"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="  M16,7C9.934,7,4.798,10.776,3,16c1.798,5.224,6.934,9,13,9s11.202-3.776,13-9C27.202,10.776,22.066,7,16,7z"
+                    fill="none"
+                    id="XMLID_10_"
+                    stroke="#000000"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="16"
+                    cy="16"
+                    fill="none"
+                    id="XMLID_12_"
+                    r="5"
+                    stroke="#000000"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  onClick={switchPasswordType}
+                  className={styles.show_hide_password}
+                  enableBackground="new 0 0 32 32"
+                  id="Editable-line"
+                  version="1.1"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="  M16,7C9.934,7,4.798,10.776,3,16c1.798,5.224,6.934,9,13,9s11.202-3.776,13-9C27.202,10.776,22.066,7,16,7z"
+                    fill="none"
+                    id="XMLID_13_"
+                    stroke="#000000"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="16"
+                    cy="16"
+                    fill="none"
+                    id="XMLID_14_"
+                    r="5"
+                    stroke="#000000"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                  <line
+                    fill="none"
+                    id="XMLID_15_"
+                    stroke="#000000"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                    x1="3"
+                    x2="29"
+                    y1="3"
+                    y2="29"
+                  />
+                </svg>
+              )
+            ) : (
+              ""
             )}
             <div className={styles.error}>
               {errors?.password && (

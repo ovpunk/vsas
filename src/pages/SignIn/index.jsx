@@ -1,6 +1,4 @@
 import styles from "./signin.module.scss";
-import show from "../../assets/icons/show.svg";
-import hide from "../../assets/icons/hide.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
@@ -40,17 +38,17 @@ export const SignIn = () => {
   });
 
   const [passwordType, setPasswordType] = useState("password");
-  const [passwordIcon, setPasswordIcon] = useState(show);
+  const [passwordIcon, setPasswordIcon] = useState("show");
 
   const switchPasswordType = (event) => {
     event.preventDefault();
     if (passwordType === "password") {
       setPasswordType("text");
-      setPasswordIcon(hide);
+      setPasswordIcon("hide");
     }
     if (passwordType === "text") {
       setPasswordType("password");
-      setPasswordIcon(show);
+      setPasswordIcon("show");
     }
   };
 
@@ -91,7 +89,7 @@ export const SignIn = () => {
               })}
             />
             {passwordValue ? (
-              passwordIcon === show ? (
+              passwordIcon === "show" ? (
                 <svg
                   onClick={switchPasswordType}
                   className={styles.show_hide_password}
