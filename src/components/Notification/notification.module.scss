@@ -2,21 +2,26 @@
   .notification {
     line-height: 24px;
     font-size: 18px;
-    margin-left: 16px;
+    font-weight: 600;
+    margin-left: 10px;
     span {
       color: #e6399b;
     }
   }
 }
 .buttons {
-  display: flex;
-  justify-content: space-evenly;
+  display: inline-flex;
+  gap: 20px;
+  margin-left: 10px;
+
   button {
+    width: 130px;
     font-size: 18px;
     font-weight: 600;
     padding: 5px 20px;
     border: 1px solid #000;
     border-radius: 12px;
+
     cursor: pointer;
   }
   .accept {
@@ -27,10 +32,10 @@
     }
   }
   .reject {
-    border: none;
+    border: 1px solid #fff;
     background-color: inherit;
     &:hover {
-      background-color: #fbe1ec;
+      color: #e6399b;
     }
   }
 }

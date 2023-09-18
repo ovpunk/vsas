@@ -3,8 +3,11 @@ import { Spinner } from "../Spinner";
 import { getPostsFetch } from "../../api";
 import { Post } from "./Post";
 import { EmptyWall } from "./EmptyWall/index";
+//import { useState } from "react";
 
 export const Posts = () => {
+  //const token = localStorage.getItem("TOKEN");
+  //const [modalActive, setModalActive] = useState(false);
   const queryClient = useQueryClient();
   queryClient.invalidateQueries({ queryKey: ["getPosts"] });
   const { data, error, isError, isLoading } = useQuery({

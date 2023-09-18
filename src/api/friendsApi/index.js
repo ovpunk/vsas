@@ -8,8 +8,7 @@ export const addFriendFetch = (id) => {
   });
 };
 
-export const applicationArrivedFetch = () => {
-  const token = localStorage.getItem("TOKEN");
+export const applicationArrivedFetch = (token) => {
   return fetch(`http://127.0.0.1:8000/api/incoming/`, {
     method: "GET",
     headers: {

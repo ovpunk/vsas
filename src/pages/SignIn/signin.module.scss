@@ -40,11 +40,17 @@
     top: 18px;
     right: 45px;
     cursor: pointer;
+    fill: #aaa;
+    &:hover {
+      path,
+      circle,
+      line {
+        transition: 0.5s;
+        stroke: #e6399b;
+      }
+    }
   }
 
-  .show_hide_password svg {
-    fill: #e6399b;
-  }
   .error {
     position: absolute;
     top: 56px;
@@ -67,7 +73,7 @@
       color: #000;
       border: 1px solid #e6399b;
       box-shadow: 2px 2px 20px rgba(230, 57, 155, 0.5);
-      transition: 0.4s ease;
+      transition: 0.5s ease;
       cursor: pointer;
     }
   }

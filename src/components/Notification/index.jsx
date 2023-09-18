@@ -1,7 +1,7 @@
 import {
   acceptFriendshipFetch,
   rejectFriendshipFetch,
-} from "../../../api/friendsApi";
+} from "../../api/friendsApi";
 import styles from "./notification.module.scss";
 import { useMutation } from "@tanstack/react-query";
 
