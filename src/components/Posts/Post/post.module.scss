@@ -9,6 +9,7 @@
   &:hover {
     transition: 0.5s;
     box-shadow: 0px 0px 50px rgba($color: #e6399b, $alpha: 0.3);
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
@@ -132,5 +133,14 @@
         }
       }
     }
+  }
+}
+.wrapper_modal {
+  box-shadow: none;
+  padding: 20px 0;
+  margin: 20px auto;
+
+  &:hover {
+    box-shadow: none;
   }
 }
