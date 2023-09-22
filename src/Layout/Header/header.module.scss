@@ -102,7 +102,7 @@
   right: 60px;
   width: 170px;
   border-radius: 20px;
-  z-index: 1000;
+  //z-index: 10;
   background-color: #faf7f6;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 
@@ -137,12 +137,6 @@
   margin: 20px 0 0;
   width: 100%;
 }
-
-//.bottom_line_bar {
-//  border-bottom: 2px solid #cac6c2;
-//  opacity: 0.3;
-//  width: 100%;
-//}
 
 .top {
   display: flex;

@@ -18,7 +18,7 @@ export const CommentField = () => {
       <div className={styles.bottom_line}></div>
       <div className={styles.field_bottom}>
         <button type="submit" className={styles.post_btn}>
-          Опубликовать комментарий
+          Пиииу
         </button>
       </div>
     </div>

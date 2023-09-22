@@ -195,7 +195,6 @@ export const Header = () => {
               <Link to={"settings"}>
                 <li>Настройки</li>
               </Link>
-              {/*<div className={styles.bottom_line_bar}></div>*/}
             </ul>
           </div>
         )}

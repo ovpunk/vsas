@@ -35,7 +35,7 @@ export const Users = () => {
             className={styles.search}
             placeholder="Введите запрос"
           />
-          <img src={search} alt="Найти" className={styles.search_icon} />
+          {/*<img src={search} alt="Найти" className={styles.search_icon} />*/}
         </div>
         {data.map((user) => (
           <UserInSearch

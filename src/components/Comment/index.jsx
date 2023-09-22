@@ -5,6 +5,7 @@ export const Comment = () => {
   return (
     <>
       <div className={styles.wrapper}>
+        <div className={styles.bottom_line}></div>
         <div className={styles.content}>
           <div className={styles.left}>
             <img src={black} alt="" className={styles.avatar} />
@@ -19,10 +20,10 @@ export const Comment = () => {
             <p className={styles.comment}>Привет!</p>
           </div>
         </div>
-        <div className={styles.bottom_line}></div>
       </div>
 
       <div className={styles.wrapper}>
+        <div className={styles.bottom_line}></div>
         <div className={styles.content}>
           <div className={styles.left}>
             <img src={black} alt="" className={styles.avatar} />
@@ -37,10 +38,10 @@ export const Comment = () => {
             <p className={styles.comment}>Привет!</p>
           </div>
         </div>
-        <div className={styles.bottom_line}></div>
       </div>
 
       <div className={styles.wrapper}>
+        <div className={styles.bottom_line}></div>
         <div className={styles.content}>
           <div className={styles.left}>
             <img src={black} alt="" className={styles.avatar} />
@@ -55,10 +56,10 @@ export const Comment = () => {
             <p className={styles.comment}>Привет!</p>
           </div>
         </div>
-        <div className={styles.bottom_line}></div>
       </div>
 
       <div className={styles.wrapper}>
+        <div className={styles.bottom_line}></div>
         <div className={styles.content}>
           <div className={styles.left}>
             <img src={black} alt="" className={styles.avatar} />
@@ -73,7 +74,6 @@ export const Comment = () => {
             <p className={styles.comment}>Привет!</p>
           </div>
         </div>
-        <div className={styles.bottom_line}></div>
       </div>
     </>
   );

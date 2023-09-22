@@ -1,8 +1,7 @@
 .container {
-  position: relative;
   margin: 0 80px 80px;
   padding: 20px;
-  z-index: -1;
+  z-index: 0;
 }
 
 .wrapper {
@@ -27,28 +26,29 @@
     }
   }
   .search_wrapper {
-    position: relative;
-
+    //position: relative;
     .search {
       display: flex;
       justify-content: center;
-      background-color: inherit;
-      border: 2px solid #cac6c2;
-      width: 96%;
-      outline: none;
-      padding: 10px;
-    }
-    .search_icon {
-      height: 30px;
-      width: 30px;
-      position: absolute;
-      top: 5px;
-      right: 8px;
-      padding-left: 8px;
-      border-left: 1px solid #cac6c2;
 
-      cursor: pointer;
+      background-color: inherit;
+      border: 1px solid #cac6c2;
+      width: 93%;
+      font-size: 18px;
+      outline: none;
+      padding: 10px 20px;
     }
+    //.search_icon {
+    //  height: 30px;
+    //  width: 30px;
+    //  position: absolute;
+    //  top: 5px;
+    //  left: 8px;
+    //  padding-right: 8px;
+    //  border-right: 1px solid #cac6c2;
+
+    //  cursor: pointer;
+    //}
   }
 }
 
