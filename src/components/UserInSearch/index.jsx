@@ -11,7 +11,7 @@ import { applicationGoneFetch } from "../../api/friendsApi/index.js";
 import { Spinner } from "../Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearApplication,
+  //clearApplication,
   deleteApplication,
   setApplication,
 } from "../../redux/slices/friends";

@@ -41,7 +41,7 @@
         text-align: center;
         .top_left {
           display: inline-flex;
-          gap: 10px;
+          gap: 20px;
 
           p {
             font-weight: 700;
@@ -67,11 +67,7 @@
         font-size: 20px;
         margin: 20px 0;
       }
-      .bottom_line {
-        border-bottom: 1px solid #cac6c2;
-        margin: 20px 0 0;
-        width: 100%;
-      }
+
       .bottom {
         margin-top: 10px;
         display: flex;
@@ -79,9 +75,6 @@
 
         .icon_wrapper {
           position: relative;
-          //display: inline-flex;
-          //align-items: center;
-          //gap: 4px;
 
           svg {
             width: 30px;
@@ -137,10 +130,130 @@
 }
 .wrapper_modal {
   box-shadow: none;
-  padding: 20px 0;
-  margin: 20px auto;
+  padding: 20px 0 0;
+  margin: 0 auto;
 
   &:hover {
     box-shadow: none;
   }
+  .content_modal {
+    .comment {
+      margin-bottom: 40px;
+    }
+    .top_modal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .top_left_modal {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        .top_info_modal {
+          display: inline-flex;
+          align-items: center;
+          gap: 20px;
+          .names_modal {
+            p {
+              font-weight: 700;
+              margin: 0;
+            }
+            span {
+              color: #cac6c2;
+            }
+          }
+          span {
+            color: #cac6c2;
+            margin-top: -24px;
+          }
+        }
+      }
+      .top_right {
+        svg {
+          height: 20px;
+          cursor: pointer;
+          &:hover {
+            fill: #e6399b;
+          }
+        }
+      }
+    }
+    .post_modal {
+      text-align: left;
+      font-size: 20px;
+      margin: 20px 0;
+    }
+    .bottom {
+      margin-top: 10px;
+      display: flex;
+      gap: 40px;
+      .icon_wrapper {
+        position: relative;
+        svg {
+          width: 30px;
+          height: 30px;
+          cursor: pointer;
+          padding: 4px;
+          align-self: center;
+          border-radius: 50%;
+          fill: #cac6c2;
+          &:hover {
+            background-color: #fbe1ec;
+            fill: #e6399b;
+          }
+        }
+        span {
+          position: absolute;
+          top: 8px;
+          right: -10px;
+          color: #cac6c2;
+        }
+        &:hover {
+          fill: #e6399b;
+          svg {
+            border-radius: 50%;
+            fill: #e6399b;
+            background-color: #fbe1ec;
+          }
+          span {
+            color: #e6399b;
+            cursor: pointer;
+          }
+        }
+      }
+      .icon_wrapper_like {
+        cursor: pointer;
+        svg {
+          width: 30px;
+          height: 30px;
+          cursor: pointer;
+          padding: 4px;
+          align-self: center;
+          border-radius: 50%;
+          fill: #e6399b;
+        }
+        span {
+          color: #e6399b;
+        }
+      }
+    }
+  }
+}
+
+//.names_modal {
+//  display: flex;
+//  align-items: center;
+//  flex-direction: column;
+//}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.bottom_line {
+  border-bottom: 1px solid #cac6c2;
+  margin: 20px 0 0;
+  width: 100%;
 }

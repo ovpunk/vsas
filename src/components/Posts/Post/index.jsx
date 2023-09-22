@@ -11,8 +11,9 @@ import {
 import { Spinner } from "../../Spinner";
 import classNames from "classnames";
 import { useState } from "react";
-import { Modal } from "../../Modal";
 import { Comment } from "../../Comment";
+import { CommentField } from "../../CommentField";
+import { ModalPost } from "../../ModalPost";
 
 export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
   const [active, setActive] = useState(false);
@@ -146,18 +147,20 @@ export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
           </div>
         </div>
       </div>
-      <Modal active={active} setActive={setActive}>
+      <ModalPost active={active} setActive={setActive}>
         <div className={classNames(styles.wrapper, styles.wrapper_modal)}>
-          <div className={styles.content}>
-            <div className={styles.left}>
-              <img src={black} alt="" className={styles.avatar} />
-            </div>
-            <div className={styles.right}>
-              <div className={styles.top}>
-                <div className={styles.top_left}>
-                  <p>{firstname}</p>
-                  <span>@{user}</span>
-                  <span>{formatTimeAgo(time)}</span>
+          <div className={styles.content_modal}>
+            <div className={styles.comment}>
+              <div className={styles.top_modal}>
+                <div className={styles.top_left_modal}>
+                  <img src={black} alt="" className={styles.avatar} />
+                  <div className={styles.top_info_modal}>
+                    <div className={styles.names_modal}>
+                      <p>{firstname}</p>
+                      <span>@{user}</span>
+                    </div>
+                    <span>{formatTimeAgo(time)}</span>
+                  </div>
                 </div>
                 <div className={styles.top_right}>
                   <svg
@@ -172,8 +175,8 @@ export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
                 </div>
               </div>
 
-              <p className={styles.post}>{content}</p>
-              <div className={styles.bottom_line}></div>
+              <p className={styles.post_modal}>{content}</p>
+              {/*<div className={styles.bottom_line}></div>*/}
 
               <div className={styles.bottom}>
                 {/* Иконка лайка */}
@@ -204,11 +207,14 @@ export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
                   <span>0</span>
                 </div>
               </div>
-              <Comment />
+              <div className={styles.bottom_line}></div>
             </div>
+            {/*<p>Комментарии</p>*/}
+            <CommentField />
+            <Comment />
           </div>
         </div>
-      </Modal>
+      </ModalPost>
     </>
   );
 };

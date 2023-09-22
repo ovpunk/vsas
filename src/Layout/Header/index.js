@@ -2,7 +2,7 @@ import styles from "./header.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import Tooltip from "../../components/Tooltip";
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "../../components/Modal";
 
 import { applicationArrivedFetch } from "../../api/friendsApi";
@@ -14,7 +14,28 @@ export const Header = () => {
 
   const location = useLocation().pathname;
 
+  //показать скрыть уведомления
   const [visibleNotifications, setVisibleNotifications] = useState(false);
+
+  //показать скрыть бар
+  const [barmodal, setBarModal] = useState(false);
+  const handleShowBar = () => {
+    setBarModal(!barmodal);
+  };
+
+  //состояние размера экрана
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const { data, error, isError, isLoading } = useQuery({
     queryKey: ["applicationArrived"],
@@ -59,7 +80,7 @@ export const Header = () => {
         {/*Отображение навигации только в авторизованной зоне */}
         {location === "/" || location === "/signup" ? (
           ""
-        ) : (
+        ) : windowWidth > 1275 ? (
           <div className={styles.nav}>
             <Tooltip text="Поиск">
               <Link to={"/users"}>
@@ -149,6 +170,33 @@ export const Header = () => {
                 </svg>
               </Link>
             </Tooltip>
+          </div>
+        ) : (
+          <svg
+            onClick={handleShowBar}
+            className={styles.bar}
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            viewBox="0 0 448 512"
+            fill="#cac6c2"
+          >
+            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+          </svg>
+        )}
+        {barmodal && windowWidth < 1275 && (
+          <div className={styles.bar_modal}>
+            <ul>
+              <Link to={"/users"}>
+                <li>Поиск</li>
+              </Link>
+
+              <li onClick={showNotifications}>Уведомления</li>
+
+              <Link to={"settings"}>
+                <li>Настройки</li>
+              </Link>
+              {/*<div className={styles.bottom_line_bar}></div>*/}
+            </ul>
           </div>
         )}
       </header>

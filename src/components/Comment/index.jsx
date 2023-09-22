@@ -16,7 +16,7 @@ export const Comment = () => {
               <span>@slava</span>
               <span>2 ч</span>
             </div>
-            <p className={styles.comment}>Пошел на хер!</p>
+            <p className={styles.comment}>Привет!</p>
           </div>
         </div>
         <div className={styles.bottom_line}></div>
@@ -34,7 +34,7 @@ export const Comment = () => {
               <span>@slava</span>
               <span>2 ч</span>
             </div>
-            <p className={styles.comment}>Пошел на хер!</p>
+            <p className={styles.comment}>Привет!</p>
           </div>
         </div>
         <div className={styles.bottom_line}></div>
@@ -52,7 +52,7 @@ export const Comment = () => {
               <span>@slava</span>
               <span>2 ч</span>
             </div>
-            <p className={styles.comment}>Пошел на хер!</p>
+            <p className={styles.comment}>Привет!</p>
           </div>
         </div>
         <div className={styles.bottom_line}></div>
@@ -70,7 +70,7 @@ export const Comment = () => {
               <span>@slava</span>
               <span>2 ч</span>
             </div>
-            <p className={styles.comment}>Пошел на хер!</p>
+            <p className={styles.comment}>Привет!</p>
           </div>
         </div>
         <div className={styles.bottom_line}></div>
