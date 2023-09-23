@@ -41,7 +41,8 @@
         text-align: center;
         .top_left {
           display: inline-flex;
-          gap: 20px;
+          align-items: center;
+          gap: 10px;
 
           p {
             font-weight: 700;
@@ -49,6 +50,8 @@
           }
           span {
             color: #cac6c2;
+            font-size: 18px;
+            margin-bottom: 2px;
           }
         }
         .top_right {
