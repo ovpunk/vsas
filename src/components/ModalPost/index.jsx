@@ -13,17 +13,15 @@ export const ModalPost = ({ active, setActive, children }) => {
       }
       onClick={handleCloseModal}
     >
-      <div className={styles.modal_wrapper}>
-        <div
-          className={
-            active
-              ? classNames(styles.content_active, styles.content)
-              : styles.content
-          }
-          onClick={(e) => e.stopPropagation()}
-        >
-          {children}
-        </div>
+      <div
+        className={
+          active
+            ? classNames(styles.content_active, styles.content)
+            : styles.content
+        }
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={styles.children}>{children}</div>
       </div>
     </div>
   );

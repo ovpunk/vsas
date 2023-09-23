@@ -208,11 +208,11 @@ export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
                 </div>
               </div>
             </div>
-            {/*<p>Комментарии</p>*/}
+            {/*Комментарии*/}
             <div className={styles.comments}>
               <Comment />
             </div>
-            {/*<p>Поле ввода комментариев</p>*/}
+            {/*Поле ввода комментариев*/}
             <div className={styles.comment_field}>
               <CommentField />
             </div>
