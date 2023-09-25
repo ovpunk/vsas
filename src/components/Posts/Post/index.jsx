@@ -30,7 +30,8 @@ export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
   if (isSuccess) {
     queryClient.invalidateQueries();
   }
-  const deleteClick = () => {
+  const deleteClick = (e) => {
+    e.stopPropagation();
     mutateAsync(id);
   };
 
@@ -88,7 +89,7 @@ export const Post = ({ content, likes, id, isLike, user, time, firstname }) => {
               </div>
               <div className={styles.top_right}>
                 <svg
-                  onClick={deleteClick}
+                  onClick={(e) => deleteClick(e)}
                   xmlns="http://www.w3.org/2000/svg"
                   height="1em"
                   viewBox="0 0 448 512"

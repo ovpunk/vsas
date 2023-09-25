@@ -56,7 +56,7 @@ export const Header = () => {
     },
   });
   if (isError) return error;
-  if (isLoading) return <>Zagruzka</>;
+  //if (isLoading) return <>Zagruzka</>;
 
   const handleCloseModal = () => {
     setVisibleNotifications(false);
@@ -233,7 +233,7 @@ export const Header = () => {
             </div>
           </div>
           <div className={styles.bottom_line}></div>
-          {data.length ? (
+          {data && data.length ? (
             data.map((el) => <Notification key={el.id} data={el} />)
           ) : (
             <p className={styles.no_notifications}>У вас нет уведомлений.</p>

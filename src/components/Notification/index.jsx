@@ -16,7 +16,7 @@ export const Notification = ({ data }) => {
     },
   });
   if (isError) return error;
-  if (isLoading) return <>Zagruzka</>;
+  //if (isLoading) return <>Zagruzka</>;
 
   const handleAccept = async (sender) => {
     mutateAsync(sender);
